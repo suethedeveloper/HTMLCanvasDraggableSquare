@@ -9,7 +9,7 @@ Create a square on Canvas which is draggable
   3. Make the square draggable
 
 ## How the code works
-Draw a 40*40 square from the cordination of (0,0). 
-When user moves mouse over(mousemove in jQuery) and click to the square(mouseDown in jQuery), initial square will be cleared and re-draw a sqaure at the point where a user let go of mouse click(mouseUp in jQuery)
+- Draw a 40*40 square from the cordination of (0,0).
+- When user moves mouse over(mousemove in jQuery) and click to the square(mouseDown in jQuery), initial square will be cleared and re-draw a sqaure at the point where a user let go of mouse click(mouseUp in jQuery)
 
 
