@@ -5,6 +5,8 @@ $(document).ready(function() {
   //Draw 40*40 square on canvas
   ctx.fillStyle = "#FFC02B";
   ctx.fillRect(0,0,40,40); 
+  var mouseLeftX = 0;
+  var mouseLeftY = 0;
 
   //Initial setup
   var canvasOffset = $("#canvas").offset();
@@ -17,7 +19,13 @@ $(document).ready(function() {
   function mouseDown(event) {
     mouseX = Number(event.clientX - offsetX);
     mouseY = Number(event.clientY - offsetY);
-    isDragging = true;
+
+    //Make sure that mouse has to be in the square to be able to drag
+    if ((mouseX < mouseLeftX || mouseLeftX + 40 < mouseX) || (mouseY < mouseLeftY || mouseLeftY + 40 < mouseY)){
+      isDragging = false;
+    } else {
+      isDragging = true;
+    }
   }
 
   function mouseMove(event) {
@@ -35,6 +43,12 @@ $(document).ready(function() {
   function mouseUp(event){
     mouseX = Number(event.clientX - offsetX);
     mouseY = Number(event.clientY - offsetY);
+    
+    //Remember cordinate where mouse has left if a user was dragging a square
+    if (isDragging) {
+      mouseLeftX = event.clientX;
+      mouseLeftY = event.clientY;
+    }
     isDragging = false;
   }
 
