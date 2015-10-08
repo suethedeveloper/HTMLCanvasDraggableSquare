@@ -21,7 +21,7 @@ $(document).ready(function() {
     mouseY = Number(event.clientY - offsetY);
 
     //Make sure that mouse has to be in the square to be able to drag
-    if ((mouseX < mouseLeftX || mouseLeftX + 40 < mouseX) || (mouseY < mouseLeftY || mouseLeftY + 40 < mouseY)){
+    if ((mouseX < mouseLeftX || mouseLeftX + 40 < mouseX) || (mouseY < mouseLeftY || mouseLeftY + 40 < mouseY)){      
       isDragging = false;
     } else {
       isDragging = true;
@@ -37,18 +37,16 @@ $(document).ready(function() {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       //Re-draw a square where a user stopped dragging
       ctx.fillRect(mouseX, mouseY, 40, 40);
+
+      //Remember cordinate where mouse has left if a user was dragging a square
+      mouseLeftX = event.clientX;
+      mouseLeftY = event.clientY; 
     }
   }
 
   function mouseUp(event){
     mouseX = Number(event.clientX - offsetX);
     mouseY = Number(event.clientY - offsetY);
-    
-    //Remember cordinate where mouse has left if a user was dragging a square
-    if (isDragging) {
-      mouseLeftX = event.clientX;
-      mouseLeftY = event.clientY;
-    }
     isDragging = false;
   }
 
